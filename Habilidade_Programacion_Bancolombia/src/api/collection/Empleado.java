@@ -24,6 +24,9 @@ public class Empleado {
         this.cargo = cargo;
     }
 
+    public Empleado() {
+    }
+
     /**
      *
      * Get and Set

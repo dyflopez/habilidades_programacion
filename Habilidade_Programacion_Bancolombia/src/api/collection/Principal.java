@@ -2,6 +2,7 @@ package api.collection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Principal {
     /**
@@ -16,6 +17,54 @@ public class Principal {
      */
 
     public static void main(String[] args) {
+
+        int option=0;
+        Scanner capturaTeclado = new Scanner(System.in);
+
+        GestionEmpleados gestionEmpleados = new GestionEmpleados();
+
+        do{
+            System.out.println("----administrador de empleados------");
+            System.out.println("1) Agregar un empleado");
+            System.out.println("2) Listar");
+            System.out.println("3) buscar por identificacion");
+            System.out.println("4) listar empleados que ganen mas de 1 salario minimo");
+            System.out.println("5) simular aumento salarial");
+            System.out.println("6) Mostrar por cargo por cargo");
+            System.out.println("7) cargar empleados");
+
+            option = capturaTeclado.nextInt();
+
+            switch (option){
+                case 1:
+                    var newEmpleadi = Utils.solicitarEmpleado();
+                    gestionEmpleados.agregarEmpelado(newEmpleadi);
+                    break;
+                case 2:
+                    gestionEmpleados.listarEmpelado();
+                    break;
+                case 3:
+                    var id  = Utils.solicitarIdentificacion();
+                    var empleeado = gestionEmpleados.obtenerPorIdentifiacion(id);
+                    System.out.println(empleeado.toString());
+                    break;
+                case 4:
+                    System.out.println("ingreso a la op 1");
+                    break;
+                case 5:
+                    System.out.println("ingreso a la op 1");
+                    break;
+                case 6:
+                    System.out.println("ingreso a la op 1");
+                    break;
+                case 7:
+                    gestionEmpleados.seed();
+                    break;
+                default:
+                    System.out.println("opcion no valida");
+                    break;
+            }
+        }while (option!=0);
 
 
         Empleado empleado =  new Empleado(1,"Daniel","Florez",1000000,"Developer");
