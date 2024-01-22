@@ -6,14 +6,9 @@ import java.util.Scanner;
 
 public class Principal {
     /**
-     * Netec requeire una aplicacion  la cual pueda gestionar sus empleados
-     *  nombre, apellido, salario, Cargo , identificacion
-     * 1) Agregar
-     * 2)listar
-     * 3) buscar por identificacion
-     * 4) listar empleados que ganen mas de un Salario minimo
-     * 5) Simular aumento salarial
-     * 6) filtrar por un cargo
+     *
+     *  Nombre completo ,  identificacion , cargo
+     * @param args
      */
 
     public static void main(String[] args) {
@@ -30,8 +25,9 @@ public class Principal {
             System.out.println("3) buscar por identificacion");
             System.out.println("4) listar empleados que ganen mas de 1 salario minimo");
             System.out.println("5) simular aumento salarial");
-            System.out.println("6) Mostrar por cargo por cargo");
+            System.out.println("6) Mostrar por cargo");
             System.out.println("7) cargar empleados");
+            System.out.println("8) Informe");
 
             option = capturaTeclado.nextInt();
 
@@ -49,16 +45,29 @@ public class Principal {
                     System.out.println(empleeado.toString());
                     break;
                 case 4:
-                    System.out.println("ingreso a la op 1");
+                    gestionEmpleados
+                            .listarEmpleadosQueGanenMasDeUnSalarioMinimo()
+                            .forEach(System.out::println);
                     break;
                 case 5:
-                    System.out.println("ingreso a la op 1");
+                    gestionEmpleados
+                            .aumentoSalarial()
+                            .forEach(System.out::println);
                     break;
                 case 6:
-                    System.out.println("ingreso a la op 1");
+                   gestionEmpleados
+                           .buscarPorCargo(
+                                   Utils.solicitarCargo()
+                           )
+                           .forEach(System.out::println);
                     break;
                 case 7:
                     gestionEmpleados.seed();
+                    break;
+                case 8:
+                    gestionEmpleados
+                            .crearInforme()
+                            .forEach(System.out::println);
                     break;
                 default:
                     System.out.println("opcion no valida");

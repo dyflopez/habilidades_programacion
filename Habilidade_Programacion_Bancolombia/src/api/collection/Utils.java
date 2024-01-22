@@ -1,9 +1,14 @@
 package api.collection;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Utils {
 
+
+    public static Predicate<Integer> validarMonto = monto -> monto > Constantes.SALARIO_MINIMO;
     public static Empleado solicitarEmpleado(){
 
         Scanner capturaTeclado = new Scanner(System.in);
@@ -41,14 +46,17 @@ public class Utils {
     }
 
     public static  int solicitarIdentificacion(){
-
         Scanner capturaTeclado = new Scanner(System.in);
-
         System.out.println("ingrese la identificacion");
-
         var identificacion = capturaTeclado.nextInt();
-
         return  identificacion;
+
+    }
+
+    public static  String solicitarCargo(){
+        Scanner capturaTeclado = new Scanner(System.in);
+        System.out.println("ingrese el cargo");
+        return capturaTeclado.next();
 
     }
 
